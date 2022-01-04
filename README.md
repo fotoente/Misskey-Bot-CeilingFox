@@ -1,7 +1,7 @@
 # Misskey-Bot-CeilingFox
 Python code of CeilingFox https://ente.fun/@ceilingfox
 
-#Dependencies
+# Dependencies
 This bot is working with the mi.py framework
 You can find it here: https://github.com/yupix/Mi.py
 
@@ -13,6 +13,7 @@ psycopg2-binary
 configparser
 ```
 
+#Configuration
 This bot is thought to be run on the same server as the PostgresDB.
 It checks every 12 hours if there are new blobfox emojis added to the Database and writes them into the `blobfox`-File
 The script reads the emojis from this file to get any emoji.
