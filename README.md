@@ -23,4 +23,7 @@ You can easily edit `LoadEmojis()` in the file ceilingfox.py to change what emoj
 To run you must provide a API token.
 In Misskey you can get one from "Settings"->"API"->"Generate Token" (Never let anyone know that token or they can post for your bot)
 
-Important: Works on my machine!
+Edit `example-bot.cfg` to add your Information and rename it to `bot.cfg`
+
+# Important
+Works on my machine!
