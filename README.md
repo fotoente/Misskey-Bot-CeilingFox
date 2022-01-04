@@ -1,6 +1,9 @@
 # Misskey-Bot-CeilingFox
 Python code of CeilingFox https://ente.fun/@ceilingfox
 
+# Learning project
+Please be aware that I uses this project to get a hang of Python, so there will be stupid beginner mistakes!
+
 # Dependencies
 This bot is working with the mi.py framework
 You can find it here: https://github.com/yupix/Mi.py
