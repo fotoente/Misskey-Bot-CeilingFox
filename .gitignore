@@ -1,3 +1,7 @@
 bot.cfg
 test.py
 archiv
+
+# Development environment
+
+.venv

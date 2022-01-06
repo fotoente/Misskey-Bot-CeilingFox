@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "misskey-bot-ceilingfox"
+version = "0.1.0"
+description = ""
+authors = ["Fotoente <robert@fotoente.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+psycopg2-binary = "^2.9.3"
+configparser = "^5.2.0"
+"mi.py" = "^2.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

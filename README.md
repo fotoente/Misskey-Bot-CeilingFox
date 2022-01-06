@@ -10,10 +10,19 @@ You can find it here: https://github.com/yupix/Mi.py
 
 Mi.py needs Python 3.9 to run. Please make sure to have `python3.9` and `python3.9-dev` installed
 
-Please install following packages via `pip`
+Please install following packages via `pip` or `poetry`
 ```
 psycopg2-binary
 configparser
+```
+
+```bash
+# pip
+pip install -r requirements.txt
+
+# poetry
+poetry env use 3.9.x # When using a virtual environment
+poetry install
 ```
 
 # Configuration
