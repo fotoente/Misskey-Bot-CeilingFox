@@ -1,13 +1,10 @@
-from datetime import datetime
-import os
 import asyncio
-from random import *
-import mi
-import configparser
-from mi import Note
+from datetime import datetime
+
 from mi.ext import commands, tasks
 from mi.note import Note
 from mi.router import Router
+
 from ceilingfox import *
 
 #Load Misskey configuration
@@ -24,11 +21,11 @@ class MyBot(commands.Bot):
     
     @tasks.loop(3600)
     async def loop1h(self):
-        await bot.post_note(content=CeilingfoxPost())
+        await bot.post_note(content=ceiling_fox_post())
     
     @tasks.loop(43200)
     async def loop12h(self):
-        LoadEmojis()
+        load_emojis()
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+" Emojis loaded!")
 
     async def on_ready(self, ws):
@@ -50,13 +47,13 @@ class MyBot(commands.Bot):
                 text="@"+note.author.username+"@"+note.author.host+" " #Building the reply on foreign instance
                 
             if (inhalt.find("!yesno")!= -1):
-                text+="\n"+CeilingfoxYesNo()
+                text+="\n" + ceiling_fox_yes_no()
             elif (inhalt.find("!story")!= -1):
-                text+=CeilingfoxStory()
+                text+= ceiling_fox_story()
             elif (inhalt.find("!number")!= -1):
-                text+=CeilingfoxNumber()
+                text+= ceiling_fox_number()
             else:
-                text+=CeilingfoxPost()            
+                text+= ceiling_fox_post()
             
             await note.reply(content=text) #Reply to a note
 
@@ -64,4 +61,3 @@ class MyBot(commands.Bot):
 if __name__ == "__main__":
     bot = MyBot("")
     asyncio.run(bot.start(uri, token))
-   

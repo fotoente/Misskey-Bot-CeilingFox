@@ -4,7 +4,7 @@ import configparser
 from random import *
 
 
-def CeilingfoxPost():
+def ceiling_fox_post():
     data = []
     with open((os.path.join(os.path.dirname(__file__), 'blobfox')), 'r', encoding='utf-8') as emojilist:
         data = emojilist.read().splitlines()
@@ -13,7 +13,7 @@ def CeilingfoxPost():
     return "$[rotate.deg=180 :" + data[zahl] + ":]"
 
 
-def CeilingfoxStory():
+def ceiling_fox_story():
     text = ""
     data = []
     with open((os.path.join(os.path.dirname(__file__), 'blobfox')), 'r', encoding='utf-8') as emojilist:
@@ -26,7 +26,7 @@ def CeilingfoxStory():
     return text
 
 
-def CeilingfoxYesNo():
+def ceiling_fox_yes_no():
     text = ""
     seed()
     coin = randint(0, 100)
@@ -41,7 +41,7 @@ def CeilingfoxYesNo():
     return text
 
 
-def CeilingfoxNumber():
+def ceiling_fox_number():
     fox = ""
     text = ""
     seed()
@@ -55,7 +55,7 @@ def CeilingfoxNumber():
     return text
 
 
-def LoadEmojis():
+def load_emojis():
     text = []
     dirname = ""
 
