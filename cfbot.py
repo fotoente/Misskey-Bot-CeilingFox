@@ -44,7 +44,7 @@ class MyBot(commands.Bot):
             if not note.content:  # Because it may be only an image
                 return
             inhalt=note.content
-            if not inhalt.find("!story")!= -1 and not inhalt.find("!number")!= -1:
+            if not inhalt.find("!story")!= -1 and not inhalt.find("!number")!= -1 and not inhalt.find("!yesno")!= -1:
                 if (note.author.host is None):
                     text="@"+note.author.username+" " #Building the reply on same instance
                 else:
