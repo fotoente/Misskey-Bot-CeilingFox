@@ -1,15 +1,15 @@
 import psycopg2, psycopg2.extras
 import os
 import configparser
-from random import *
+import random
 
 
 def ceiling_fox_post():
     data = []
     with open((os.path.join(os.path.dirname(__file__), 'blobfox')), 'r', encoding='utf-8') as emojilist:
         data = emojilist.read().splitlines()
-    seed()
-    zahl = randint(0, len(data) - 1)
+    random.seed()
+    zahl = random.randint(0, len(data) - 1)
     return "$[rotate.deg=180 :" + data[zahl] + ":]"
 
 
@@ -18,18 +18,18 @@ def ceiling_fox_story():
     data = []
     with open((os.path.join(os.path.dirname(__file__), 'blobfox')), 'r', encoding='utf-8') as emojilist:
         data = emojilist.read().splitlines()
-    seed()
-    zahl = randint(5, 10)
+    random.seed()
+    zahl = random.randint(5, 10)
     for _ in range(zahl):
-        emoji = randint(0, len(data) - 1)
+        emoji = random.randint(0, len(data) - 1)
         text += "$[rotate.deg=180 :" + data[emoji] + ":]"
     return text
 
 
 def ceiling_fox_yes_no():
     text = ""
-    seed()
-    coin = randint(0, 100)
+    random.seed()
+    coin = random.randint(0, 100)
     if (coin <= 45):
         text = "$[rotate.deg=180 :vlpnsayyes:]"
     elif (coin > 45 and coin < 55):
@@ -44,13 +44,13 @@ def ceiling_fox_yes_no():
 def ceiling_fox_number():
     fox = ""
     text = ""
-    seed()
-    emoji = randint(0, 1)
+    random.seed()
+    emoji = random.randint(0, 1)
     if emoji == 1:
         fox = ":blobfoxsignnoublush:"
     else:
         fox = ":blobfoxsignnou:"
-    number = randint(0, 9)
+    number = random.randint(0, 9)
     text="$[rotate.deg=180 "+fox+"\n\(\\\\[-18mu]\)$[rotate.deg=5 \(\scriptsize\colorbox{white}{\hspace{6mu}\\textcolor{black}{"+str(number)+".}\hspace{6mu}}\)]]"
     return text
 
