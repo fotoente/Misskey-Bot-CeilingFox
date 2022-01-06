@@ -41,6 +41,8 @@ class MyBot(commands.Bot):
     async def on_mention(self, note: Note):
         text=""
         if (not note.author.bot):
+            if not note.content:  # Because it may be only an image
+                return
             inhalt=note.content
             if (note.author.host is None):
                 text="@"+note.author.username+" " #Building the reply on same instance
