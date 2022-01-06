@@ -10,8 +10,10 @@ from ceilingfox import *
 #Load Misskey configuration
 config = configparser.ConfigParser()
 config.read(os.path.join(os.path.dirname(__file__), 'bot.cfg'))
-uri="ws://"+config.get("misskey","instance")+"/streaming"
+uri="wss://"+config.get("misskey","instance")+"/streaming"
 token=config.get("misskey","token")
+
+
 
 INITIAL_COGS = ['cogs.command']
 class MyBot(commands.Bot):
@@ -24,7 +26,7 @@ class MyBot(commands.Bot):
     
     @tasks.loop(3600)
     async def loop1h(self):
-        await bot.post_note(content=ceiling_fox_post())
+        await bot.post_note(content=ceiling_fox_post(), visibility="public")
     
     @tasks.loop(43200)
     async def loop12h(self):
@@ -44,14 +46,14 @@ class MyBot(commands.Bot):
             if not note.content:  # Because it may be only an image
                 return
             inhalt=note.content
-            if not inhalt.find("!story")!= -1 and not inhalt.find("!number")!= -1 and not inhalt.find("!yesno")!= -1:
-                if (note.author.host is None):
-                    text="@"+note.author.username+" " #Building the reply on same instance
-                else:
-                    text="@"+note.author.username+"@"+note.author.host+" " #Building the reply on foreign instance
-                text+= ceiling_fox_post()                
-                await note.reply(content=text) #Reply to a note
-        await self.progress_command(note)
+            #if not inhalt.find("!story")!= -1 and not inhalt.find("!number")!= -1 and not inhalt.find("!yesno")!= -1:
+            if (note.author.host is None):
+                text="@"+note.author.username+" " #Building the reply on same instance
+            else:
+                text="@"+note.author.username+"@"+note.author.host+" " #Building the reply on foreign instance
+            text+= ceiling_fox_post()                
+            await note.reply(content=text) #Reply to a note
+        #await self.progress_command(note)
 
 
 if __name__ == "__main__":
