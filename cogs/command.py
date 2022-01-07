@@ -10,15 +10,15 @@ class MentionCommandCog(commands.Cog):
         self.bot = bot
 
     @commands.mention_command(regex=r'!yesno')
-    async def yesno(self, ctx: Note):
+    async def yesno(self, ctx: Note,*args,**kwargs):
         await ctx.reply(f'{get_mention(ctx)}\n{ceiling_fox_yes_no()}')
 
     @commands.mention_command(regex=r'!story')
-    async def story(self, ctx: Note):
+    async def story(self, ctx: Note,*args,**kwargs):
         await ctx.reply(f'{get_mention(ctx)}\n{ceiling_fox_story()}')
     
     @commands.mention_command(regex=r'!number')
-    async def number(self, ctx: Note):
+    async def number(self, ctx: Note,*args,**kwargs):
         await ctx.reply(f'{get_mention(ctx)}\n{ceiling_fox_number()}')
 
 
