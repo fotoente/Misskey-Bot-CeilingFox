@@ -1,6 +1,8 @@
 bot.cfg
 test.py
 archiv
+__pycache__
+.idea
 
 # Development environment
 
