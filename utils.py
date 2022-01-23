@@ -23,5 +23,5 @@ def get_mention(note: Note) -> str:
     if not isinstance(note, Note):
         raise TypeError("note must be a Note")
     if note.author.host is None:
-        return f'@{note.author.username}'
-    return f'@{note.author.username}@{note.author.host}'
+        return f'@{note.author.name}'
+    return f'@{note.author.name}@{note.author.host}'
