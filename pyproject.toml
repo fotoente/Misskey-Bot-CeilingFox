@@ -8,7 +8,7 @@ authors = ["Fotoente <robert@fotoente.net>"]
 python = "^3.9"
 psycopg2-binary = "^2.9.3"
 configparser = "^5.2.0"
-"mi.py" = "^2.0.0"
+"mi.py" = {git = "https://github.com/yupix/Mi.py.git"}
 
 [tool.poetry.dev-dependencies]
 
