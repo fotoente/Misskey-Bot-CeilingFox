@@ -117,7 +117,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "mi.py"
-version = "3.0.0"
+version = "3.1.0"
 description = ""
 category = "main"
 optional = false
@@ -133,7 +133,7 @@ emoji = "*"
 type = "git"
 url = "https://github.com/yupix/Mi.py.git"
 reference = "master"
-resolved_reference = "74f97eaa5037533f89f9ba28cc0e18cf0357bcbb"
+resolved_reference = "8180ec338b8e311b9708dec76aa15a5c96d01871"
 
 [[package]]
 name = "multidict"
