@@ -117,16 +117,23 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "mi.py"
-version = "2.0.0"
-description = "A Python wrapper for the Misskey API"
+version = "3.1.0"
+description = ""
 category = "main"
 optional = false
 python-versions = ">=3.9, <4.0"
+develop = false
 
 [package.dependencies]
 aiocache = "*"
 aiohttp = "*"
 emoji = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/yupix/Mi.py.git"
+reference = "master"
+resolved_reference = "8180ec338b8e311b9708dec76aa15a5c96d01871"
 
 [[package]]
 name = "multidict"
@@ -159,7 +166,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "bd70fa87be00ef0d57c748ce0da934dc956e6a051299672252a697f0c8fb54b4"
+content-hash = "052806daf730859fe22e94573fb966b10fe55345f116855262256c2f6286ecf3"
 
 [metadata.files]
 aiocache = [
@@ -341,9 +348,7 @@ idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
-"mi.py" = [
-    {file = "mi.py-2.0.0.tar.gz", hash = "sha256:71f3701a096b4ecb0509e97b2b62c207f66edd0ebf76ec992fe8fabd0725ada9"},
-]
+"mi.py" = []
 multidict = [
     {file = "multidict-5.2.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:3822c5894c72e3b35aae9909bef66ec83e44522faf767c0ad39e0e2de11d3b55"},
     {file = "multidict-5.2.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:28e6d883acd8674887d7edc896b91751dc2d8e87fbdca8359591a13872799e4e"},
