@@ -37,5 +37,8 @@ In Misskey you can get one from "Settings"->"API"->"Generate Token" (Never let a
 
 Edit `example-bot.cfg` to add your Information and rename it to `bot.cfg`
 
+## Contributers
+A big thank you to [Yupix](https://github.com/yupix/) for all the help with the Mi.py framework and making the code more readable!
+
 # Important
 Works on my machine!
