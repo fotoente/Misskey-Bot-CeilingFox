@@ -2,18 +2,22 @@ import asyncio
 from datetime import datetime
 
 from mi.ext import commands, tasks
-from mi.note import Note
-from mi.router import Router
+from mi.framework import Note
+from mi.framework.router import Router
+from mi.next_utils import check_multi_arg
 
-from ceilingfox import *
+import ceilingfox
 
 # Load Misskey configuration
-config = configparser.ConfigParser()
-config.read(os.path.join(os.path.dirname(__file__), 'bot.cfg'))
-uri = "wss://" + config.get("misskey", "instance") + "/streaming"
+config = ceilingfox.configparser.ConfigParser()
+config.read(ceilingfox.os.path.join(ceilingfox.os.path.dirname(__file__), 'bot.cfg'))
+url = config.get("misskey", "instance")
 token = config.get("misskey", "token")
 
 INITIAL_COGS = ['cogs.command']
+
+if not check_multi_arg(url, token):
+    raise Exception("Misskey instance and token are required.")
 
 
 class MyBot(commands.Bot):
@@ -25,11 +29,11 @@ class MyBot(commands.Bot):
 
     @tasks.loop(3600)
     async def loop1h(self):
-        await bot.client.note.send(content=ceiling_fox_post(), visibility="public")
+        await bot.client.note.send(content=ceilingfox.ceiling_fox_post(), visibility="public")
 
     @tasks.loop(43200)
     async def loop12h(self):
-        load_emojis()
+        ceilingfox.load_emojis()
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " Emojis loaded!")
 
     async def on_ready(self, ws):
@@ -45,15 +49,12 @@ class MyBot(commands.Bot):
                 return
             inhalt = note.content
             if not inhalt.find("!story") != -1 and not inhalt.find("!number") != -1 and not inhalt.find("!yesno") != -1:
-                if note.author.host is None:
-                    text = "@" + note.author.name + " "  # Building the reply on same instance
-                else:
-                    text = "@" + note.author.name + "@" + note.author.host + " "  # Building the reply on foreign instance
-                text += ceiling_fox_post()
+                text = note.author.action.get_mention()
+                text += ceilingfox.ceiling_fox_post()
                 await note.reply(content=text)  # Reply to a note
         await self.progress_command(note)
 
 
 if __name__ == "__main__":
     bot = MyBot()
-    asyncio.run(bot.start(uri, token))
+    asyncio.run(bot.start(url, token))
