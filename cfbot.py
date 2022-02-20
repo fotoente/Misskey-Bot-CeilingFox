@@ -11,7 +11,7 @@ import ceilingfox
 # Load Misskey configuration
 config = ceilingfox.configparser.ConfigParser()
 config.read(ceilingfox.os.path.join(ceilingfox.os.path.dirname(__file__), 'bot.cfg'))
-url = config.get("misskey", "instance")
+url = "https://" + config.get("misskey", "instance")
 token = config.get("misskey", "token")
 
 INITIAL_COGS = ['cogs.command']
