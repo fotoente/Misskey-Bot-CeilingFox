@@ -1,10 +1,10 @@
 import asyncio
 from datetime import datetime
 
-from mi.ext import commands, tasks
-from mi.framework import Note
-from mi.framework.router import Router
-from mi.next_utils import check_multi_arg
+from mipa.ext import commands, tasks
+from mipa.router import Router
+from mipac.models import Note
+from mipac.util import check_multi_arg
 
 import ceilingfox
 
@@ -29,7 +29,7 @@ class MyBot(commands.Bot):
 
     @tasks.loop(3600)
     async def loop1h(self):
-        await bot.client.note.send(content=ceilingfox.ceiling_fox_post(), visibility="public")
+        note = await bot.client.note.action.send(content=ceilingfox.ceiling_fox_post(), visibility="home")
 
     @tasks.loop(43200)
     async def loop12h(self):
@@ -38,8 +38,9 @@ class MyBot(commands.Bot):
 
     async def on_ready(self, ws):
         await Router(ws).connect_channel(["global", "main"])  # Connect to global and main channels
-        await self.client.note.send(content=datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " $[rotate.deg=180 :blobfox:] Bot " \
-                                                                                           "started!", visibility="specified")
+        await self.client.note.action.send(content=datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " $[rotate.deg=180 :blobfox:] "
+                                                                                              "Bot " \
+                                                                                           "started!", visibility="home")
         self.loop12h.start()  # Launching renew emojis every 12 hours
         self.loop1h.start()  # Launching posting every hour
 
