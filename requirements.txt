@@ -1,3 +1,4 @@
 psycopg2-binary
 configparser
-Mi.py
+git+https://github.com/yupix/mipa.git
+mipac

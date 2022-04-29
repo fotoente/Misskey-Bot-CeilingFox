@@ -89,17 +89,6 @@ docs = ["sphinx", "jaraco.packaging (>=8.2)", "rst.linker (>=1.9)", "jaraco.tide
 testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-cov", "pytest-enabler (>=1.0.1)", "types-backports", "pytest-black (>=0.3.7)", "pytest-mypy"]
 
 [[package]]
-name = "emoji"
-version = "1.6.3"
-description = "Emoji for Python"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.extras]
-dev = ["pytest", "coverage", "coveralls"]
-
-[[package]]
 name = "frozenlist"
 version = "1.3.0"
 description = "A list-like structure which implements collections.abc.MutableSequence"
@@ -116,24 +105,39 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
-name = "mi.py"
-version = "3.9.9"
+name = "mipa"
+version = "0.0.2"
 description = ""
 category = "main"
 optional = false
-python-versions = ">=3.9, <4.0"
+python-versions = ">=3.10, <4.0"
 develop = false
+
+[package.extras]
+dev = ["axblack", "isort", "mypy", "flake8"]
+ci = ["flake8", "mypy"]
+
+[package.source]
+type = "git"
+url = "https://github.com/yupix/mipa.git"
+reference = "master"
+resolved_reference = "03959272c878b7adbccc423a80a51aa0ab6056fe"
+
+[[package]]
+name = "mipac"
+version = "0.0.2"
+description = "A Python wrapper for the Misskey API"
+category = "main"
+optional = false
+python-versions = ">=3.10, <4.0"
 
 [package.dependencies]
 aiocache = "*"
 aiohttp = "*"
-emoji = "*"
 
-[package.source]
-type = "git"
-url = "https://github.com/yupix/Mi.py.git"
-reference = "master"
-resolved_reference = "dc072cbd0823cc06e8262a77f770034f69d6c773"
+[package.extras]
+ci = ["flake8", "mypy"]
+dev = ["axblack", "isort", "mypy", "flake8"]
 
 [[package]]
 name = "multidict"
@@ -165,8 +169,8 @@ multidict = ">=4.0"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9"
-content-hash = "052806daf730859fe22e94573fb966b10fe55345f116855262256c2f6286ecf3"
+python-versions = "^3.10"
+content-hash = "7b0015578dda90244e134ca6602e7e99735a02c3ea06146b4025e7b6539260a5"
 
 [metadata.files]
 aiocache = [
@@ -267,9 +271,6 @@ configparser = [
     {file = "configparser-5.2.0-py3-none-any.whl", hash = "sha256:e8b39238fb6f0153a069aa253d349467c3c4737934f253ef6abac5fe0eca1e5d"},
     {file = "configparser-5.2.0.tar.gz", hash = "sha256:1b35798fdf1713f1c3139016cfcbc461f09edbf099d1fb658d4b7479fcaa3daa"},
 ]
-emoji = [
-    {file = "emoji-1.6.3.tar.gz", hash = "sha256:cc28bdc1010b1c03c241f69c7af1e8715144ef45a273bfadc14dc89319ba26d0"},
-]
 frozenlist = [
     {file = "frozenlist-1.3.0-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:d2257aaba9660f78c7b1d8fea963b68f3feffb1a9d5d05a18401ca9eb3e8d0a3"},
     {file = "frozenlist-1.3.0-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:4a44ebbf601d7bac77976d429e9bdb5a4614f9f4027777f9e54fd765196e9d3b"},
@@ -335,7 +336,10 @@ idna = [
     {file = "idna-3.3-py3-none-any.whl", hash = "sha256:84d9dd047ffa80596e0f246e2eab0b391788b0503584e8945f2368256d2735ff"},
     {file = "idna-3.3.tar.gz", hash = "sha256:9d643ff0a55b762d5cdb124b8eaa99c66322e2157b69160bc32796e824360e6d"},
 ]
-"mi.py" = []
+mipa = []
+mipac = [
+    {file = "mipac-0.0.2.tar.gz", hash = "sha256:4bbca50c39654b8f470a387a2128451da180526b998ea8c2ca0172e79fafa9d8"},
+]
 multidict = [
     {file = "multidict-6.0.2-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:0b9e95a740109c6047602f4db4da9949e6c5945cefbad34a1299775ddc9a62e2"},
     {file = "multidict-6.0.2-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:ac0e27844758d7177989ce406acc6a83c16ed4524ebc363c1f748cba184d89d3"},

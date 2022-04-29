@@ -5,10 +5,11 @@ description = ""
 authors = ["Fotoente <robert@fotoente.net>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 psycopg2-binary = "^2.9.3"
 configparser = "^5.2.0"
-"mi.py" = {git = "https://github.com/yupix/Mi.py.git"}
+mipa = {git = "https://github.com/yupix/mipa.git"}
+mipac = "^0.0.2"
 
 [tool.poetry.dev-dependencies]
 
