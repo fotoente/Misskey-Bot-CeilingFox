@@ -1,7 +1,6 @@
-from mi.ext import Context, commands
-from mi.framework import Note
+from mipa.ext import Context, commands
 
-from ceilingfox import ceiling_fox_number, ceiling_fox_yes_no, ceiling_fox_story
+from ceilingfox import ceiling_fox_number, ceiling_fox_story, ceiling_fox_yes_no
 
 
 class MentionCommandCog(commands.Cog):
