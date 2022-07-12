@@ -29,18 +29,16 @@ class MyBot(commands.Bot):
 
     @tasks.loop(3600)
     async def loop1h(self):
-        note = await bot.client.note.action.send(content=ceilingfox.ceiling_fox_post(), visibility="public")
+        await bot.client.note.action.send(content=ceilingfox.ceiling_fox_post(), visibility="public")
 
     @tasks.loop(43200)
     async def loop12h(self):
-        ceilingfox.load_emojis()
+        #  ceilingfox.load_emojis()
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " Emojis loaded!")
 
     async def on_ready(self, ws):
         await Router(ws).connect_channel(["global", "main"])  # Connect to global and main channels
-        await self.client.note.action.send(content=datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " $[rotate.deg=180 :blobfox:] "
-                                                                                              "Bot " \
-                                                                                           "started!", visibility="specified")
+        await self.client.note.action.send(content=datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " $[rotate.deg=180 :blobfox:] Bot started!", visibility="specified")
         self.loop12h.start()  # Launching renew emojis every 12 hours
         self.loop1h.start()  # Launching posting every hour
 

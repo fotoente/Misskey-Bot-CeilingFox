@@ -1,6 +1,6 @@
 psycopg2-binary
 configparser
-git+https://github.com/yupix/mipa.git
-mipac
+git+https://github.com/yupix/MiPA.git
+git+https://github.com/yupix/MiPAC.git
 usjon
 msgpack
