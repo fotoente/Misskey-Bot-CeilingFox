@@ -36,7 +36,7 @@ class MyBot(commands.Bot):
 
     @tasks.loop(43200)
     async def loop12h(self):
-        #  ceilingfox.load_emojis()
+        ceilingfox.load_emojis()
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " Emojis loaded!")
 
     async def on_ready(self, ws):
