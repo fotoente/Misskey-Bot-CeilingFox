@@ -56,7 +56,7 @@ class MyBot(commands.Bot):
                 if not inhalt.find("!fox") != -1:
                     await note.reply(content=text)  # Reply to a note
                 else:
-                    folders = await self.client.action.drive.action.get_folders()
+                    folders = await self.client.drive.action.get_folders()
                     all_file: list[File] = []
                     for folder in folders:
                         all_file.extend(await folder.action.file.action.get_files(limit=100))
