@@ -1,10 +1,13 @@
 import asyncio
+import random
 from datetime import datetime
 
 from mipa.ext import commands, tasks
 from mipa.router import Router
 from mipac.models import Note
 from mipac.util import check_multi_arg
+from mipac import File
+from mipac.manager import MiFile
 
 import ceilingfox
 
@@ -33,7 +36,7 @@ class MyBot(commands.Bot):
 
     @tasks.loop(43200)
     async def loop12h(self):
-        #  ceilingfox.load_emojis()
+        ceilingfox.load_emojis()
         print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') + " Emojis loaded!")
 
     async def on_ready(self, ws):
@@ -50,7 +53,16 @@ class MyBot(commands.Bot):
             if not inhalt.find("!story") != -1 and not inhalt.find("!number") != -1 and not inhalt.find("!yesno") != -1:
                 text = note.author.action.get_mention()
                 text += ceilingfox.ceiling_fox_post()
-                await note.reply(content=text)  # Reply to a note
+                if not inhalt.find("!fox") != -1:
+                    await note.reply(content=text)  # Reply to a note
+                else:
+                    folders = await self.client.drive.action.get_folders()
+                    all_file: list[File] = []
+                    for folder in folders:
+                        all_file.extend(await folder.action.file.action.get_files(limit=100))
+
+                    await note.reply(content=text, files=[MiFile(file_id=random.choice(all_file).id)])
+
         await self.progress_command(note)
 
 

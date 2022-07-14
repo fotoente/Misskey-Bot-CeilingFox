@@ -1,4 +1,7 @@
+import random
 from mipa.ext import Context, commands
+from mipac import File
+from mipac.client import Client
 
 from ceilingfox import ceiling_fox_number, ceiling_fox_story, ceiling_fox_yes_no
 
